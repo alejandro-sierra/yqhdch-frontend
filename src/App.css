@@ -1,5 +1,44 @@
+:root{
+  --primary-soft: #95F774;
+  --primary: #75E07E;
+  --primary-variant: #BAED6F;
+  --secondary-soft: #FFDA87;
+  --secondary: #FCA244;
+
+}
+
 .App{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.form-control{
+  border-radius: 15px;
+}
+
+.btn-primary{
+  background-color: var(--primary);
+  border: var(--primary);
+}
+
+.btn-primary:hover{
+  background-color: var(--primary-soft);
+  border: var(--primary-soft);
+}
+
+.swal-footer{
+  text-align: center;
+}
+
+.swal-button{
+  background-color: var(--secondary);
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+}
+
+.swal-button:not([disabled]):hover{
+  background-color: var(--secondary-soft);
 }
