@@ -1,9 +1,9 @@
 import { Button, Form, Image } from "react-bootstrap";
-import './login-form.styles.css'
 import loginImage from '../../../assets/img/login-image.png'
 import swal from "sweetalert";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import './login-form.styles.css'
 
 export const LoginForm = () => {
 

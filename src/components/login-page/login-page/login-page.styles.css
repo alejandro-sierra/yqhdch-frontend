@@ -1,7 +1,7 @@
 .login-page{
-    background-image: url('../../../assets/img/background-login.png');
+    background: rgb(233,135,96);
+    background: linear-gradient(40deg, rgba(233,135,96,1) 0%, rgba(128,221,150,1) 100%); 
     height: 100vh;
-    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { CardRecipes } from './components/card-recipe/card-recipe.component';
 import { LoginPage } from './components/login-page/login-page/login-page.component';
 import { NavBar } from './components/nav-bar/nav-bar.component';
-import './App.css';
 import { useState, useAuth } from 'react';
+import './App.css';
 
 
 const ProtectedRoute = ({ children }) => {
