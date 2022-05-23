@@ -2,7 +2,7 @@ import { Button, Form, Image } from "react-bootstrap";
 import './login-form.styles.css'
 import loginImage from '../../../assets/img/login-image.png'
 import swal from "sweetalert";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const LoginForm = () => {
@@ -21,16 +21,26 @@ export const LoginForm = () => {
                 icon: "info"
             })
         } else {
-            fetch('http://localhost:8000/api/login', {
-                headers: { 'Content-Type': 'application/json' },
-                method: 'post',
-                body: JSON.stringify({
+            const http = axios.create({
+                baseURL: 'http://localhost:8000',
+                headers: {
+                    'X-Request-With': 'XMLHttpRequest',
+                },
+                withCredentials: true,
+            })
+
+            getUser()
+
+            async function getUser() {
+                const csrf = await http.get('/sanctum/csrf-cookie')
+
+                const login = await http.post('/api/login', {
                     email: email,
                     password: password
                 })
-            })
-            console.log(email + " => " + password)
 
+                localStorage.setItem('my-token', login.data.token);
+            }
         }
     }
 
