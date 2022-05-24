@@ -7,7 +7,7 @@ export const CardRecipes = () => {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/recipes')
+        axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes')
             .then(response => setRecipes(response.data))
     }, [])
 
