@@ -4,6 +4,7 @@ import { NavBar } from './components/nav-bar/nav-bar.component';
 import { useState } from 'react';
 import { MainPage } from './components/main-page/main-page/main-page.component';
 import './App.css';
+import { CardRecipes } from './components/card-recipe/card-recipe.component';
 
 
 const ProtectedRoute = ({ children }) => {
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/cards' element={<CardRecipes/>}/>
       </Routes>
     </div>
   );
