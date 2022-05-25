@@ -5,3 +5,8 @@
 .navbar-toggler-icon:hover{
     background-image: url(./hamburger.png);
 }
+
+.logo{
+    width: 40px;
+    height: 40px;
+}
