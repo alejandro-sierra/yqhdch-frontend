@@ -1,0 +1,7 @@
+.navbar-collapse {
+    justify-content: space-between;
+}
+
+.navbar-toggler-icon:hover{
+    background-image: url(./hamburger.png);
+}

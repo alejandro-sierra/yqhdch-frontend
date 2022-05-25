@@ -7,7 +7,7 @@ export const MainForm = () => {
         <div className='main-form container-fluid mx-4'>
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control type="number" min={1} max={7} placeholder="¿Cuántas recitas quieres?" />
+                        <Form.Control type="number" min={1} max={7} placeholder="¿Cuántas recetas quieres?" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
