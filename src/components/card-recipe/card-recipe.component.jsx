@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import Helmet from 'react-helmet';
+import { AuthToken } from '../../Constants';
 
 export const CardRecipes = () => {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes')
+        // axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes')
+        axios.get('http://localhost:8000/api/recipes',
+             AuthToken)
             .then(response => setRecipes(response.data))
     }, [])
 

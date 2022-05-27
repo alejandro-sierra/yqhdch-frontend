@@ -1,46 +1,58 @@
 import { Button, Form, Image } from "react-bootstrap";
 import loginImage from '../../../assets/img/login-image.png'
 import swal from "sweetalert";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import './login-form.styles.css'
+import { NavBar } from "../../nav-bar/nav-bar/nav-bar.component";
+import { render } from "react-dom";
 
 export const LoginForm = () => {
-
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
+    const navegate = useNavigate()
 
     const formSubmit = e => {
         e.preventDefault()
 
         if (!(email && password)) {
             swal({
-                title: "Vaya...",
-                text: "El email o la contraseña son incorrectos.",
+                title: "Cuidado...",
+                text: "Todos los campos son obligatorios.",
                 icon: "info"
             })
         } else {
-            const http = axios.create({
-                baseURL: 'http://yquehagodecomerhoy.xyz:8000',
-                headers: {
-                    'X-Request-With': 'XMLHttpRequest',
-                },
-                withCredentials: true,
-            })
-
-            getUser()
-
-            async function getUser() {
-                const csrf = await http.get('/sanctum/csrf-cookie')
-
-                const login = await http.post('/api/login', {
-                    email: email,
-                    password: password
+            (async () => {
+                const http = axios.create({
+                    // baseURL: 'http://yquehagodecomerhoy.xyz:8000',
+                    baseURL: 'http://localhost:8000',
+                    headers: {
+                        'X-Request-With': 'XMLHttpRequest',
+                    },
+                    withCredentials: true,
                 })
 
-                localStorage.setItem('my-token', login.data.token);
-            }
+                const csrf = await http.get('/sanctum/csrf-cookie')
+
+                try {
+                    const login = await http.post('/api/login', {
+                        email: email,
+                        password: password
+                    })
+                    navegate('/')
+                    window.location.reload()
+                    localStorage.setItem('my-token', login.data.token);
+                } catch (e) {
+                    swal({
+                        title: "Vaya...",
+                        text: "El email o la contraseña son incorrectos, intentalo de nuevo.",
+                        icon: "warning"
+                    })
+                }
+
+
+            })()
         }
     }
 

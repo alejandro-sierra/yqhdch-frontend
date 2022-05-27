@@ -3,7 +3,7 @@
 }
 
 .navbar-toggler-icon:hover{
-    background-image: url(./hamburger.png);
+    background-image: url(../../../assets/img/hamburger.png);
 }
 
 .logo{

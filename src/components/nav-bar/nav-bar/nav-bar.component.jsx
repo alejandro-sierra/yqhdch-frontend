@@ -1,9 +1,21 @@
-import { Container, Navbar, NavDropdown, Nav, Image } from "react-bootstrap";
-import { Link, useHref } from "react-router-dom";
-import logo from './cook-book.png'
+import { Container, Navbar, Nav, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { NavBarUser } from "../nav-bar-user/nav-bar-user.component";
+import { useEffect, useState } from "react";
+import { AuthToken } from "../../../Constants";
+import axios from "axios";
+import logo from '../../../assets/img/cook-book.png'
 import './nav-bar.styles.css'
 
 export const NavBar = () => {
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        // axios.get('http://yquehagodecomerhoy.xyz:8000/api/me')
+        axios.get('http://localhost:8000/api/me',
+            AuthToken)
+            .then(response => setUser(response.data))
+    }, [])
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
@@ -20,13 +32,7 @@ export const NavBar = () => {
                         <Nav.Link as={Link} to='/cards'>Cards</Nav.Link>
                     </Nav>
                     <Nav>
-                        <NavDropdown title="Admin" id="basic-nav-dropdown" className="justify-content-end">
-                            <NavDropdown.Item as={Link} to='/cards'>Administración</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='/cards'>Perfil</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to='/cards'>Cerrar sesión</NavDropdown.Item>
-                            {/* <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
-                        </NavDropdown>
+                        {user ? <NavBarUser user={user} /> : <></>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
