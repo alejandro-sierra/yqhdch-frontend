@@ -8,8 +8,8 @@ export const NavBarUser = ({ user }) => {
 
     const logout = () => {
         (async () => {
-            // axios.get('http://yquehagodecomerhoy.xyz:8000/api/logout',
-            await axios.get('http://localhost:8000/api/logout', AuthToken)
+            // await axios.get('http://localhost:8000/api/logout', AuthToken)
+            await axios.get('http://yquehagodecomerhoy.xyz:8000/api/logout', AuthToken)
             navegate('/')
             window.location.reload()
         })()

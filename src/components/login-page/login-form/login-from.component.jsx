@@ -2,11 +2,9 @@ import { Button, Form, Image } from "react-bootstrap";
 import loginImage from '../../../assets/img/login-image.png'
 import swal from "sweetalert";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './login-form.styles.css'
-import { NavBar } from "../../nav-bar/nav-bar/nav-bar.component";
-import { render } from "react-dom";
 
 export const LoginForm = () => {
     const [email, setEmail] = useState("")
@@ -25,8 +23,8 @@ export const LoginForm = () => {
         } else {
             (async () => {
                 const http = axios.create({
-                    // baseURL: 'http://yquehagodecomerhoy.xyz:8000',
-                    baseURL: 'http://localhost:8000',
+                    // baseURL: 'http://localhost:8000',
+                    baseURL: 'http://yquehagodecomerhoy.xyz:8000',
                     headers: {
                         'X-Request-With': 'XMLHttpRequest',
                     },

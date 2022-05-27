@@ -11,10 +11,9 @@ export const NavBar = () => {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        // axios.get('http://yquehagodecomerhoy.xyz:8000/api/me')
-        axios.get('http://localhost:8000/api/me',
-            AuthToken)
-            .then(response => setUser(response.data))
+        // axios.get('http://localhost:8000/api/me', AuthToken)
+        axios.get('http://yquehagodecomerhoy.xyz:8000/api/me', AuthToken)
+        .then(response => setUser(response.data))
     }, [])
 
     return (

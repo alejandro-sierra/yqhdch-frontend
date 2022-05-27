@@ -10,16 +10,16 @@ export const MainForm = () => {
 
     useEffect(() => {
         (async () => {
-            // await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/times',
-            await axios.get('http://localhost:8000/api/recipes/times')
+            // await axios.get('http://localhost:8000/api/recipes/times')
+            await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/times')
                 .then(response => setTimes(response.data))
-            
-            // await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/diets',
-            await axios.get('http://localhost:8000/api/recipes/diets')
+
+            // await axios.get('http://localhost:8000/api/recipes/diets')
+            await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/diets')
                 .then(response => setDiets(response.data))
-            
-            // await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/difficulties',
-            await axios.get('http://localhost:8000/api/recipes/difficulties')
+
+            // await axios.get('http://localhost:8000/api/recipes/difficulties')
+            await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/difficulties')
                 .then(response => setDifficulties(response.data))
         })()
     }, [])
