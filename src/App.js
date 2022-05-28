@@ -6,6 +6,7 @@ import { CardRecipes } from './components/card-recipe/card-recipe.component';
 import { PageError } from './components/errors/page-error.component';
 import { NavBar } from './components/nav-bar/nav-bar/nav-bar.component';
 import './App.css';
+import { RegisterPage } from './components/register-page/register-page/register-page.component';
 
 
 const ProtectedRoute = ({ children }) => {
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/register' element={<RegisterPage/>}/>
         <Route path='/cards' element={<CardRecipes/>}/>
         <Route path='/*' element={<PageError/>}/>
       </Routes>

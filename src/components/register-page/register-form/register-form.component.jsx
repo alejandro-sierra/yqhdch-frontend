@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { Button, Form, Image } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import axios from "axios";
 import { apiRouteBase } from "../../../Constants";
-import loginImage from '../../../assets/img/login-image.png'
-import './login-form.styles.css'
+import welcomeImage from '../../../assets/img/welcome.png'
+import './register-form.styles.css'
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
+    const [nombre, setNombre] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const navegate = useNavigate()
 
     const formSubmit = e => {
         e.preventDefault()
 
-        if (!(email && password)) {
+        if (!(nombre && email && password && passwordConfirmation)) {
             swal({
                 title: "Cuidado...",
                 text: "Todos los campos son obligatorios.",
@@ -34,17 +36,19 @@ export const LoginForm = () => {
                 const csrf = await http.get('/sanctum/csrf-cookie')
 
                 try {
-                    const login = await http.post('/api/login', {
+                    const register = await http.post('/api/register', {
+                        name: nombre,
                         email: email,
-                        password: password
+                        password: password,
+                        password_confirmation: passwordConfirmation
                     })
                     navegate('/')
                     window.location.reload()
-                    localStorage.setItem('my-token', login.data.token);
+                    localStorage.setItem('my-token', register.data.token);
                 } catch (e) {
                     swal({
                         title: "Vaya...",
-                        text: "El email o la contraseña son incorrectos, inténtalo de nuevo.",
+                        text: "El email ya está usado o las contraseñas no coinciden, compruébalo.",
                         icon: "warning"
                     })
                 }
@@ -56,17 +60,22 @@ export const LoginForm = () => {
 
     return (
         <Form className="login-form" onSubmit={formSubmit}>
-            <Image className="login-image" src={loginImage} />
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Image className="login-image" src={welcomeImage} />
+            <Form.Group className="mb-3">
+                <Form.Control type="text" placeholder="Nombre" onChange={e => setNombre(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3">
                 <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3">
                 <Form.Control type="password" placeholder="Contraseña" onChange={e => setPassword(e.target.value)} />
             </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Control type="password" placeholder="Confirmar contraseña" onChange={e => setPasswordConfirmation(e.target.value)} />
+            </Form.Group>
             <Button variant="primary" type="submit">
-                Iniciar Sesión
+                Registrarse
             </Button>
-            <Link to={'/register'}>Registrarse</Link>
         </Form>
     );
 }

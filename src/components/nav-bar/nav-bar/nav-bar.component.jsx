@@ -29,7 +29,7 @@ export const NavBar = () => {
                         <Nav.Link as={Link} to='/cards'>Cards</Nav.Link>
                     </Nav>
                     <Nav>
-                        {user ? <NavBarUser user={user} /> : <Nav.Link as={Link} to='/login'>Iniciar sesión</Nav.Link>}
+                        {user ? <NavBarUser user={user} /> : <Nav.Link as={Link} to='/login'>Iniciar sesión / Registrarse</Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

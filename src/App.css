@@ -35,7 +35,7 @@
   border: var(--primary-soft);
 }
 
-.swal-footer{
+.swal-footer, .swal-text{
   text-align: center;
 }
 
