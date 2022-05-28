@@ -2,7 +2,7 @@ import { Container, Navbar, Nav, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { NavBarUser } from "../nav-bar-user/nav-bar-user.component";
 import { useEffect, useState } from "react";
-import { AuthToken } from "../../../Constants";
+import { apiRouteBase, AuthToken } from "../../../Constants";
 import axios from "axios";
 import logo from '../../../assets/img/cook-book.png'
 import './nav-bar.styles.css'
@@ -11,8 +11,7 @@ export const NavBar = () => {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        // axios.get('http://localhost:8000/api/me', AuthToken)
-        axios.get('http://yquehagodecomerhoy.xyz:8000/api/me', AuthToken)
+        axios.get(apiRouteBase + '/api/me', AuthToken)
         .then(response => setUser(response.data))
     }, [])
 
@@ -27,11 +26,10 @@ export const NavBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
                         <Nav.Link as={Link} to='/'>Inicio</Nav.Link>
-                        <Nav.Link as={Link} to='/login'>Iniciar sesión</Nav.Link>
                         <Nav.Link as={Link} to='/cards'>Cards</Nav.Link>
                     </Nav>
                     <Nav>
-                        {user ? <NavBarUser user={user} /> : <></>}
+                        {user ? <NavBarUser user={user} /> : <Nav.Link as={Link} to='/login'>Iniciar sesión</Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

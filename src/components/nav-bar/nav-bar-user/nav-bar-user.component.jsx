@@ -1,15 +1,14 @@
 import axios from "axios";
 import { NavDropdown, Nav } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthToken } from "../../../Constants";
+import { apiRouteBase, AuthToken } from "../../../Constants";
 
 export const NavBarUser = ({ user }) => {
     const navegate = useNavigate()
 
     const logout = () => {
         (async () => {
-            // await axios.get('http://localhost:8000/api/logout', AuthToken)
-            await axios.get('http://yquehagodecomerhoy.xyz:8000/api/logout', AuthToken)
+            await axios.get(apiRouteBase + '/api/logout', AuthToken)
             navegate('/')
             window.location.reload()
         })()

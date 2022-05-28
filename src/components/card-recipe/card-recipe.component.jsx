@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card } from 'react-bootstrap';
 import Helmet from 'react-helmet';
+import { apiRouteBase } from '../../Constants';
 
 export const CardRecipes = () => {
     const [recipes, setRecipes] = useState([])
 
     useEffect(() => {
-        // axios.get('http://localhost:8000/api/recipes')
-        axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes')
+        axios.get(apiRouteBase + '/api/recipes')
         .then(response => setRecipes(response.data))
     }, [])
 
@@ -19,7 +19,7 @@ export const CardRecipes = () => {
             </Helmet>
             {recipes.map(recipe => {
                 return (
-                    <Card style={{ width: '18rem' }}>
+                    <Card key={recipe.id} style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={recipe.url_image} />
                         <Card.Body>
                             <Card.Title>{recipe.title}</Card.Title>

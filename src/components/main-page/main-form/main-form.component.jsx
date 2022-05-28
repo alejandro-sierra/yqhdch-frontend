@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './main-form.styles.css'
+import { apiRouteBase } from '../../../Constants';
 
 export const MainForm = () => {
     const [times, setTimes] = useState([])
@@ -10,16 +11,13 @@ export const MainForm = () => {
 
     useEffect(() => {
         (async () => {
-            // await axios.get('http://localhost:8000/api/recipes/times')
-            await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/times')
+            await axios.get(apiRouteBase + '/api/recipes/times')
                 .then(response => setTimes(response.data))
 
-            // await axios.get('http://localhost:8000/api/recipes/diets')
-            await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/diets')
+            await axios.get(apiRouteBase + '/api/recipes/diets')
                 .then(response => setDiets(response.data))
 
-            // await axios.get('http://localhost:8000/api/recipes/difficulties')
-            await axios.get('http://yquehagodecomerhoy.xyz:8000/api/recipes/difficulties')
+            await axios.get(apiRouteBase + '/api/recipes/difficulties')
                 .then(response => setDifficulties(response.data))
         })()
     }, [])
