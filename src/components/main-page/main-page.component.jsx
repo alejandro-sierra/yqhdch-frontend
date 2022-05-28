@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { apiRouteBase } from '../../Constants';
 import axios from 'axios';
 import swal from 'sweetalert';
 import Helmet from 'react-helmet';
 import './main-page.styles.css'
-import { DashList } from '../dash-list/dash-list.component';
 
 export const MainPage = () => {
     const [times, setTimes] = useState([])
@@ -21,6 +20,7 @@ export const MainPage = () => {
     const [recipes, setRecipes] = useState([])
 
     const navegate = useNavigate()
+    const location = useLocation()
 
     useEffect(() => {
         (async () => {
@@ -46,18 +46,22 @@ export const MainPage = () => {
         } else {
             (async () => {
                 await axios.get(apiRouteBase + `/api/recipe/${number}/${time}/${difficulty}/${diet}`)
-                .then(response => console.log(response.data))
-                // console.log(`${number}, ${time}, ${difficulty}, ${diet}`)
-
+                    .then(response => {
+                        if (response.data.error) {
+                            swal({
+                                title: "Vaya...!",
+                                text: `${response.data.error}`,
+                                icon: "error"
+                            })
+                        } else {
+                            navegate('/dash_list', {
+                                state: {
+                                    recipes: response.data
+                                }
+                            })
+                        }
+                    })
             })()
-            // navegate('/dash_list', {
-                //     state: {
-                    //         number: number,
-            //         time: time,
-            //         difficulty: difficulty,
-            //         diet: diet
-            //     }
-            // })
         }
     }
 

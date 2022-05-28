@@ -60,7 +60,7 @@ export const RegisterForm = () => {
 
     return (
         <div className="background-generic container-fluid">
-            <Form className="login-form ç" onSubmit={formSubmit}>
+            <Form className="login-form" onSubmit={formSubmit}>
                 <Image className="login-image" src={welcomeImage} />
                     <Form.Control type="text" placeholder="Nombre" onChange={e => setNombre(e.target.value)} />
                     <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
