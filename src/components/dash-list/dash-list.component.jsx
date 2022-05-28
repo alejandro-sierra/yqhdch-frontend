@@ -14,17 +14,6 @@ export const DashList = () => {
     const navegate = useNavigate()
     const recipes = location.state.recipes
 
-    /*
-    const dashes = document.querySelectorAll(".block-dash")
-
-    dashes[0].addEventListener("click", function(e){
-
-    })
-    
-    console.log(dashes)
-    */
-
-
     useEffect(() => {
         console.log(location.state.recipes);
         if (!location.state) {
@@ -32,12 +21,24 @@ export const DashList = () => {
         }
     })
 
-    const handleDetail = id =>{
+    const handleBlock = e => {
         swal({
             title: "Click...",
-            text: `${id}`,
+            text: `${e.target.offsetParent.offsetParent}`,
             icon: "info"
         })
+    }
+
+
+    const handleDetail = e => {
+        console.log(e.target.offsetParent)
+        swal({
+            title: "Click...",
+            text: `${e.target.id}`,
+            icon: "info"
+        })
+        if (e.target.className === "block-dash") {
+        }
     }
 
 
@@ -48,15 +49,15 @@ export const DashList = () => {
             </Helmet>
             <div className="dash-box">
                 {recipes.map(recipe => {
-                    return(
-                        <div className='block-dash' id={recipe.id}>
+                    return (
+                        <div className='block-dash' id={recipe.id} onClick={e => handleDetail(e)}>
                             <div className="block-icon-dash">
-                                <Image src={blockImg} className="icon-dash"/>
-                                <Image src={favoriteImg} className="icon-dash"/>
-                                <Image src={deleteImg} className="icon-dash"/>
+                                <Image src={blockImg} className="icon-dash" onClick={e => handleBlock(e)} />
+                                <Image src={favoriteImg} className="icon-dash" />
+                                <Image src={deleteImg} className="icon-dash" />
                             </div>
-                            <Image src={recipe.url_image} className="image-dash"/>
-                            <p>{recipe.title}</p>
+                            <Image id={recipe.id} src={recipe.url_image} className="image-dash" />
+                            <p id={recipe.id}>{recipe.title}</p>
                         </div>
                     )
                 })}
