@@ -59,23 +59,17 @@ export const RegisterForm = () => {
     }
 
     return (
-        <Form className="login-form" onSubmit={formSubmit}>
-            <Image className="login-image" src={welcomeImage} />
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Nombre" onChange={e => setNombre(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="password" placeholder="Contraseña" onChange={e => setPassword(e.target.value)} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="password" placeholder="Confirmar contraseña" onChange={e => setPasswordConfirmation(e.target.value)} />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Registrarse
-            </Button>
-        </Form>
+        <div className="background-generic container-fluid">
+            <Form className="login-form ç" onSubmit={formSubmit}>
+                <Image className="login-image" src={welcomeImage} />
+                    <Form.Control type="text" placeholder="Nombre" onChange={e => setNombre(e.target.value)} />
+                    <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+                    <Form.Control type="password" placeholder="Contraseña" onChange={e => setPassword(e.target.value)} />
+                    <Form.Control type="password" placeholder="Confirmar contraseña" onChange={e => setPasswordConfirmation(e.target.value)} />
+                <Button variant="primary" type="submit">
+                    Registrarse
+                </Button>
+            </Form>
+        </div>
     );
 }

@@ -13,21 +13,21 @@ export const CardRecipes = () => {
     }, [])
 
     return (
-        <>
+        <div className='background-generic'>
             <Helmet>
                 <title>Inicio | YQHDCH</title>
             </Helmet>
-            {recipes.map(recipe => {
-                return (
-                    <Card key={recipe.id} style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={recipe.url_image} />
-                        <Card.Body>
-                            <Card.Title>{recipe.title}</Card.Title>
-                            <Button id={recipe.id} variant="primary">Leer más</Button>
-                        </Card.Body>
-                    </Card>
-                );
-            })}
-        </>
+                {recipes.map(recipe => {
+                    return (
+                        <Card key={recipe.id} style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src={recipe.url_image} />
+                            <Card.Body>
+                                <Card.Title>{recipe.title}</Card.Title>
+                                <Button id={recipe.id} variant="primary">Leer más</Button>
+                            </Card.Body>
+                        </Card>
+                    );
+                })}
+        </div>
     );
 }
