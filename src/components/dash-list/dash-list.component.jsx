@@ -13,32 +13,21 @@ export const DashList = () => {
     const location = useLocation()
     const navegate = useNavigate()
     const recipes = location.state.recipes
-
+    
     useEffect(() => {
-        console.log(location.state.recipes);
-        if (!location.state) {
-            navegate('/')
-        }
+        // TODO: si entra en la ruta y no hay location.state le lleve a '/'
     })
 
-    const handleBlock = e => {
-        swal({
-            title: "Click...",
-            text: `${e.target.offsetParent.offsetParent}`,
-            icon: "info"
-        })
-    }
-
-
     const handleDetail = e => {
-        console.log(e.target.offsetParent)
-        swal({
-            title: "Click...",
-            text: `${e.target.id}`,
-            icon: "info"
+        let recipeSelect 
+        recipes.map(recipe =>{
+            // recipeSelect = recipe.id == e.target.id ? recipe : {}
+            if (recipe.id == e.target.id) {
+                recipeSelect = recipe
+            }
         })
-        if (e.target.className === "block-dash") {
-        }
+        // TODO: navegate('/details)
+        console.log(recipeSelect)
     }
 
 
@@ -51,11 +40,11 @@ export const DashList = () => {
                 {recipes.map(recipe => {
                     return (
                         <div className='block-dash' id={recipe.id} onClick={e => handleDetail(e)}>
-                            <div className="block-icon-dash">
+                            {/* <div className="block-icon-dash">
                                 <Image src={blockImg} className="icon-dash" onClick={e => handleBlock(e)} />
                                 <Image src={favoriteImg} className="icon-dash" />
                                 <Image src={deleteImg} className="icon-dash" />
-                            </div>
+                            </div> */}
                             <Image id={recipe.id} src={recipe.url_image} className="image-dash" />
                             <p id={recipe.id}>{recipe.title}</p>
                         </div>
