@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Button, Form, Image } from "react-bootstrap";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import axios from "axios";
-import { apiRouteBase } from "../../../Constants";
-import welcomeImage from '../../../assets/img/welcome.png'
-import './register-form.styles.css'
+import { apiRouteBase } from "../../Constants";
+import welcomeImage from '../../assets/img/welcome.png'
+import './register-page.styles.css'
+import Helmet from "react-helmet";
 
-export const RegisterForm = () => {
+export const RegisterPage = () => {
     const [nombre, setNombre] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -60,12 +61,15 @@ export const RegisterForm = () => {
 
     return (
         <div className="background-generic container-fluid">
+            <Helmet>
+                <title>Registro | YQHDCH</title>
+            </Helmet>
             <Form className="login-form" onSubmit={formSubmit}>
                 <Image className="login-image" src={welcomeImage} />
-                    <Form.Control type="text" placeholder="Nombre" onChange={e => setNombre(e.target.value)} />
-                    <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
-                    <Form.Control type="password" placeholder="Contraseña" onChange={e => setPassword(e.target.value)} />
-                    <Form.Control type="password" placeholder="Confirmar contraseña" onChange={e => setPasswordConfirmation(e.target.value)} />
+                <Form.Control type="text" placeholder="Nombre" onChange={e => setNombre(e.target.value)} />
+                <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+                <Form.Control type="password" placeholder="Contraseña" onChange={e => setPassword(e.target.value)} />
+                <Form.Control type="password" placeholder="Confirmar contraseña" onChange={e => setPasswordConfirmation(e.target.value)} />
                 <Button variant="primary" type="submit">
                     Registrarse
                 </Button>

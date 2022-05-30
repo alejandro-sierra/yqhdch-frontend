@@ -19,9 +19,19 @@
   font-family: var(--font-secondary);
 }
 
-.background-generic{
+/* .background-generic{
   background: var(--secondary-soft);
   background: linear-gradient(40deg, var(--secondary-soft) 0%, var(--primary-soft) 100%); 
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.background-generic{
+  background-image: url(../src/assets/img/verduras.jpg);
+  background-position: center;
+  background-size: cover;
   height: 100vh;
   display: flex;
   justify-content: center;
