@@ -14,23 +14,17 @@ export const DishList = () => {
     const navegate = useNavigate()
 
     const [recipes, setRecipes] = useState([])
-    
+
     useEffect(() => {
         if (!location.state) {
             navegate('/')
-        }else{
+        } else {
             setRecipes(location.state.recipes)
         }
     }, [])
 
     const handleDetail = e => {
-        let recipeSelect 
-        recipes.map(recipe =>{
-            if (recipe.id == e.target.id) {
-                recipeSelect = recipe
-            }
-        })
-        navegate(`/details/${e.target.id}`)
+        navegate(`/recipe/details/${e.target.id}`)
     }
 
 
@@ -39,10 +33,10 @@ export const DishList = () => {
             <Helmet>
                 <title>Inicio | YQHDCH</title>
             </Helmet>
-            <div className="dish-box">
+            <div className="box">
                 {recipes.map(recipe => {
                     return (
-                        <div className='block-dish' id={recipe.id} onClick={e => handleDetail(e)}>
+                        <div className='block-dish' id={recipe.id} key={recipe.id} onClick={e => handleDetail(e)}>
                             {/* { user ? 
                             <div className="block-icon-dish">
                                 <Image src={blockImg} className="icon-dish" />

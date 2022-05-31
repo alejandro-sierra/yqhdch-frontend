@@ -10,6 +10,7 @@ import { CreateRecipe } from './components/create-recipe/create-recipe.component
 import axios from 'axios';
 import { apiRouteBase, AuthToken } from './Constants';
 import { DishList } from './components/dish-list/dish-list.component';
+import { DishDetails } from './components/dish-details/dish-details.components';
 
 // TODO: Revisar como hacer rutas protegidas
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/create_recipe' element={<CreateRecipe />} />
         <Route path='/dish_list' element={<DishList />} />
+        <Route path='recipe/details/:id' element={<DishDetails />} />
 
         <Route path='/*' element={<PageError />} />
       </Routes>
