@@ -1,33 +1,36 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Image } from 'react-bootstrap'
 import Helmet from 'react-helmet'
 import { useLocation, useNavigate } from 'react-router-dom'
 import favoriteImg from '../../assets/img/favorite.png'
 import blockImg from '../../assets/img/block.png'
 import deleteImg from '../../assets/img/delete.png'
-import './dash-list.styles.css'
 import swal from 'sweetalert'
+import './dish-list.styles.css'
 
-export const DashList = ({ user }) => {
+export const DishList = () => {
 
     const location = useLocation()
     const navegate = useNavigate()
-    const recipes = location.state.recipes
+
+    const [recipes, setRecipes] = useState([])
     
     useEffect(() => {
-        // TODO: si entra en la ruta y no hay location.state le lleve a '/'
-    })
+        if (!location.state) {
+            navegate('/')
+        }else{
+            setRecipes(location.state.recipes)
+        }
+    }, [])
 
     const handleDetail = e => {
         let recipeSelect 
         recipes.map(recipe =>{
-            // recipeSelect = recipe.id == e.target.id ? recipe : {}
             if (recipe.id == e.target.id) {
                 recipeSelect = recipe
             }
         })
-        // TODO: navegate('/details)
-        console.log(recipeSelect)
+        navegate(`/details/${e.target.id}`)
     }
 
 
@@ -36,18 +39,18 @@ export const DashList = ({ user }) => {
             <Helmet>
                 <title>Inicio | YQHDCH</title>
             </Helmet>
-            <div className="dash-box">
+            <div className="dish-box">
                 {recipes.map(recipe => {
                     return (
-                        <div className='block-dash' id={recipe.id} onClick={e => handleDetail(e)}>
+                        <div className='block-dish' id={recipe.id} onClick={e => handleDetail(e)}>
                             {/* { user ? 
-                            <div className="block-icon-dash">
-                                <Image src={blockImg} className="icon-dash" />
-                                <Image src={favoriteImg} className="icon-dash" />
-                                <Image src={deleteImg} className="icon-dash" />
+                            <div className="block-icon-dish">
+                                <Image src={blockImg} className="icon-dish" />
+                                <Image src={favoriteImg} className="icon-dish" />
+                                <Image src={deleteImg} className="icon-dish" />
                             </div> 
                             : <></>} */}
-                            <Image id={recipe.id} src={recipe.url_image} className="image-dash" />
+                            <Image id={recipe.id} src={recipe.url_image} className="image-dish" />
                             <p id={recipe.id}>{recipe.title}</p>
                         </div>
                     )

@@ -14,8 +14,8 @@ export const MainPage = () => {
 
     const [number, setNumber] = useState('1')
     const [time, setTime] = useState('30')
-    const [difficulty, setDifficulty] = useState('facil')
-    const [diet, setDiet] = useState('vegetariano')
+    const [difficulty, setDifficulty] = useState('fácil')
+    const [diet, setDiet] = useState('vegetariana')
 
     const [recipes, setRecipes] = useState([])
 
@@ -54,7 +54,7 @@ export const MainPage = () => {
                                 icon: "error"
                             })
                         } else {
-                            navegate('/dash_list', {
+                            navegate('/dish_list', {
                                 state: {
                                     recipes: response.data
                                 }
@@ -78,7 +78,7 @@ export const MainPage = () => {
                         <Form.Text muted>Elige entre una y siete recetas.</Form.Text>
                     </Form.Group>
 
-                    <Form.Label htmlFor="time">Tiempo de preparación</Form.Label>
+                    <Form.Label htmlFor="time">Tiempo de preparación (en minutos)</Form.Label>
                     <Form.Group className="mb-3" controlId="time">
                         <Form.Select onChange={e => setTime(e.target.value)} defaultValue={time}>
                             <option hidden value={time}>{time}</option>

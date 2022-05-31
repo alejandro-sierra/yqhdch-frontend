@@ -1,11 +1,11 @@
-.dash-box {
+.dish-box {
     background-color: white;
     padding: 40px 30px;
     border-radius: 15px;
     max-width: 650px;
 }
 
-.block-dash {
+.block-dish {
     background-color: var(--color-border-soft);
     border: 1px solid var(--color-border);
     box-shadow: -3px 16px 16px -10px rgba(0,0,0,0.51);
@@ -18,41 +18,41 @@
     position: relative;
 }
 
-.block-dash p {
+.block-dish p {
     user-select: none;
 }
 
-.block-dash:not(:first-child) {
+.block-dish:not(:first-child) {
     margin-top: 25px;
 }
 
 
-.image-dash {
+.image-dish {
     width: 150px;
     max-height: 100px;
     border-radius: 10px;
 }
 
-.block-icon-dash{
+.block-icon-dish{
     position: absolute;
     right: 0;
     top: -30px;
 }
 
-.icon-dash{
+.icon-dish{
     width: 30px;
     height: 30px;
     margin: 10px;
 }
 
 @media (max-width: 992px) {
-    .block-dash p {
+    .block-dish p {
         font-size: 13.5px;
         text-align: center;
         font-weight: 700;
     }
 
-    .block-dash {
+    .block-dish {
         justify-content: flex-end;
         align-items: center;
     }
