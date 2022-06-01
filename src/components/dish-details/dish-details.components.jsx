@@ -32,12 +32,12 @@ export const DishDetails = () => {
                 <div className='block-details'>
                     <div className="header-details">
                         <div className="header-text-details">
-                            <Image src={recipe.url_image} className="image-dish" />
-                            <p>{recipe.title}</p>
+                            <h4>{recipe.title}</h4>
+                            <Image src={recipe.url_image} className="image-details" />
                         </div>
                         <div className="header-content-details">
                             <p>Dificultad: {recipe.difficulty}</p>
-                            <p>Tiempo de preparación: {recipe.preparation_time}</p>
+                            <p>Tiempo de preparación: {recipe.preparation_time} min</p>
                         </div>
                     </div>
                     <div className="details-box">

@@ -1,0 +1,13 @@
+.btn-create-recipe{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.btn-create-recipe button:first-child{
+    background-color: #ff3b6b;
+}
+
+.btn-create-recipe button:first-child:hover{
+    background-color: #4b2f36;
+}

@@ -8,9 +8,15 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 20px 10px;
+    padding: 20px 50px;
     margin: 10px 0px;
     max-width: 650px;
+}
+
+@media (max-width: 992px) {
+    .details-box {
+        padding: 20px 10px;
+    }
 }
 
 .header-details {
@@ -22,10 +28,7 @@
 }
 
 .header-text-details {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     border-bottom: 1px solid var(--color-border);
     padding-bottom: 10px;
 
@@ -44,4 +47,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.image-details {
+    width: 300px;
+    max-height: auto;
+    border-radius: 10px;
 }

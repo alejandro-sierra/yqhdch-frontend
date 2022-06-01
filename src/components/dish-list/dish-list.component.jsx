@@ -7,6 +7,8 @@ import blockImg from '../../assets/img/block.png'
 import deleteImg from '../../assets/img/delete.png'
 import swal from 'sweetalert'
 import './dish-list.styles.css'
+import axios from 'axios'
+import { apiRouteBase, AuthToken } from '../../Constants'
 
 export const DishList = () => {
 
@@ -14,6 +16,7 @@ export const DishList = () => {
     const navegate = useNavigate()
 
     const [recipes, setRecipes] = useState([])
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         if (!location.state) {
@@ -21,6 +24,14 @@ export const DishList = () => {
         } else {
             setRecipes(location.state.recipes)
         }
+    }, [])
+
+    useEffect(() => {
+        (async () => {
+            await axios.get(apiRouteBase + '/api/me', AuthToken)
+                .then(response => setUser(response.data))
+                .catch(console.log('No hay usuario registrado'))
+        })()
     }, [])
 
     const handleDetail = e => {
@@ -33,22 +44,39 @@ export const DishList = () => {
             <Helmet>
                 <title>Inicio | YQHDCH</title>
             </Helmet>
-            <div className="box">
+            <div className="details-box">
                 {recipes.map(recipe => {
                     return (
                         <div className='block-dish' id={recipe.id} key={recipe.id} onClick={e => handleDetail(e)}>
-                            {/* { user ? 
-                            <div className="block-icon-dish">
-                                <Image src={blockImg} className="icon-dish" />
-                                <Image src={favoriteImg} className="icon-dish" />
-                                <Image src={deleteImg} className="icon-dish" />
-                            </div> 
-                            : <></>} */}
+                            { user ?
+                                <div className="block-icon-dish">
+                                    <Image src={blockImg} className="icon-dish" />
+                                    <Image src={favoriteImg} className="icon-dish" />
+                                    <Image src={deleteImg} className="icon-dish" />
+                                </div>
+                                : <></>}
                             <Image id={recipe.id} src={recipe.url_image} className="image-dish" />
                             <p id={recipe.id}>{recipe.title}</p>
                         </div>
                     )
                 })}
+                {/* <div className='details-box'>
+                    <h6>Ingredientes necesarios</h6>
+                    <ul>
+                        {recipes.map(recipe => {
+                            return (
+                                <>
+                                    <li> {recipe.title} </li>
+                                    <ul>
+                                        {recipe.ingredients.map(ingredient => {
+                                            return <li> {ingredient} </li>
+                                        })}
+                                    </ul>
+                                </>
+                            )
+                        })}
+                    </ul>
+                </div> */}
             </div>
         </div>
     )
