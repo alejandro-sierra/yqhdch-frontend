@@ -52,7 +52,6 @@ export const DishList = () => {
                                 <div className="block-icon-dish">
                                     <Image src={blockImg} className="icon-dish" />
                                     <Image src={favoriteImg} className="icon-dish" />
-                                    <Image src={deleteImg} className="icon-dish" />
                                 </div>
                                 : <></>}
                             <Image id={recipe.id} src={recipe.url_image} className="image-dish" />

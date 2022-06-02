@@ -1,0 +1,31 @@
+.profile-box {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    max-width: 650px;
+}
+
+.profile-navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.profile-navbar img{
+    height: 50px;
+    width: 50px;
+}
+
+.profile-navbar a{
+    padding: 20px;
+    border: 1px solid var(--color-border-soft);
+    border-radius: 15px;
+    height: 80px;
+    background-color: #aa3545;
+}
+
+.profile-navbar a:hover{
+    background-color: #c3879e;
+}

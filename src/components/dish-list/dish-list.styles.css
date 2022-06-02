@@ -29,13 +29,13 @@
 .block-icon-dish{
     position: absolute;
     right: 0;
-    top: -30px;
+    top: -35px;
 }
 
 .icon-dish{
     width: 30px;
     height: 30px;
-    margin: 10px;
+    margin: 20px;
 }
 
 @media (max-width: 992px) {
@@ -50,3 +50,10 @@
         align-items: center;
     }
 }
+
+@media (min-width: 992px) {
+    .block-dish {
+        min-width: 550px;
+    }
+}
+

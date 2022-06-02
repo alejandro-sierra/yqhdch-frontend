@@ -20,8 +20,8 @@ export const NavBarUser = ({ user }) => {
         user ?
             <Nav>
                 <NavDropdown title={user.name} id="basic-nav-dropdown" className="justify-content-end">
-                    {user.rol === 'admin' ? <NavDropdown.Item as={Link} to='/cards'>Administración</NavDropdown.Item> : <></>}
-                    <NavDropdown.Item as={Link} to='/cards'>Perfil</NavDropdown.Item>
+                    {user.rol === 'admin' ? <NavDropdown.Item as={Link} to='/admin'>Administración</NavDropdown.Item> : <></>}
+                    <NavDropdown.Item as={Link} to='/profile'>Perfil</NavDropdown.Item>
                     <NavDropdown.Item onClick={logout}>Cerrar sesión</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
