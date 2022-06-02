@@ -11,3 +11,8 @@
 .btn-create-recipe button:first-child:hover{
     background-color: #4b2f36;
 }
+
+.textarea-create{
+    resize: none;
+    height: 300px;
+}

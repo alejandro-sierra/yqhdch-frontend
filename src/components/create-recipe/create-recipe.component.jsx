@@ -78,7 +78,7 @@ export const CreateRecipe = () => {
             </Helmet>
             <Form className="login-form">
                 <Form.Control type="text" placeholder="Título" value={titulo} onChange={e => setTitulo(e.target.value)} />
-                <Form.Control as="textarea" placeholder="Preparación" value={preparacion} onChange={e => setPreparacion(e.target.value)} />
+                <Form.Control className='textarea-create' as="textarea" placeholder="Preparación" value={preparacion} onChange={e => setPreparacion(e.target.value)} />
                 <Form.Select aria-label="Default select example" value={dificultad} onChange={e => setDificultad(e.target.value)}>
                     <option value="fácil">Fácil</option>
                     <option value="media">Media</option>
@@ -88,6 +88,7 @@ export const CreateRecipe = () => {
                 <Form.Select aria-label="Default select example" value={dieta} onChange={e => setDieta(e.target.value)}>
                     <option value="vegetariana">Vegetariana</option>
                     <option value="estandar">Estandar</option>
+                    <option value="postre">Postres</option>
                 </Form.Select>
                 <Form.Control type="text" placeholder="Url de la imágen" value={imagen_url} onChange={e => setImageUrl(e.target.value)} />
                 <div className='btn-create-recipe'>
