@@ -14,10 +14,8 @@ import { ProfileFavorite } from './components/profile/profile-favorite/profile-f
 import { ProfileBlock } from './components/profile/profile-block/profile-block.component';
 import './App.css';
 
-// TODO: Revisar como hacer rutas protegidas
-
 function App() {
-
+ 
   return (
     <div className="App">
       <NavBar />
@@ -30,7 +28,7 @@ function App() {
         <Route path='recipe/details/:id' element={<DishDetails />} />
         <Route path="/admin/*" element={<Admin />}>
         </Route>
-        <Route path="/profile/*" element={<ProfilePage />}>
+        <Route path="/profile/*" element={<ProfilePage /> }>
           <Route index element={<ProfileUser />} />
           <Route path="favorites" element={<ProfileFavorite />} />
           <Route path="block" element={<ProfileBlock />} />

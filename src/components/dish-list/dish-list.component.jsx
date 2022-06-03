@@ -30,7 +30,6 @@ export const DishList = () => {
         (async () => {
             await axios.get(apiRouteBase + '/api/me', AuthToken)
                 .then(response => setUser(response.data))
-                .catch(console.log('No hay usuario registrado'))
         })()
     }, [])
 

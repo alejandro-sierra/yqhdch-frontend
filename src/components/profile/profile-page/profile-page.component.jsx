@@ -1,23 +1,36 @@
 import { Image, Nav } from "react-bootstrap";
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import user from '../../../assets/img/user.png'
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import favorite from '../../../assets/img/favorite.png'
 import block from '../../../assets/img/block.png'
 import './profile-page.styles.css'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { apiRouteBase } from "../../../Constants";
+import { apiRouteBase, AuthToken } from "../../../Constants";
+import userIMG from '../../../assets/img/user.png'
 
 
 
 export const ProfilePage = () => {
 
+    const navegate = useNavigate()
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        (async () => {
+            try {
+                await axios.get(apiRouteBase + '/api/me', AuthToken)
+                .then(response => setUser(response.data))
+            } catch (e) {
+                navegate('/')
+            }
+        })()
+    }, [])
 
     return (
         <div className="background-generic container-fluid">
             <div className="profile-box">
                 <div className="profile-navbar">
-                    <Nav.Link as={NavLink} to='/profile'><Image src={user}/></Nav.Link>
+                    <Nav.Link as={NavLink} to='/profile'><Image src={userIMG}/></Nav.Link>
                     <Nav.Link as={NavLink} to='favorites'><Image src={favorite}/></Nav.Link>
                     <Nav.Link as={NavLink} to='block'><Image src={block}/></Nav.Link>
                 </div>

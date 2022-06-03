@@ -2,8 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import Helmet from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import { apiRouteBase } from '../../Constants';
+import { apiRouteBase, AuthToken } from '../../Constants';
 import './create-recipe.styles.css'
 
 export const CreateRecipe = () => {
@@ -14,6 +15,22 @@ export const CreateRecipe = () => {
     const [tiempo, setTiempo] = useState("")
     const [dieta, setDieta] = useState("vegetariana")
     const [imagen_url, setImageUrl] = useState("")
+
+
+    const navegate = useNavigate()
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        (async () => {
+            try {
+                await axios.get(apiRouteBase + '/api/me', AuthToken)
+                .then(response => setUser(response.data))
+            } catch (e) {
+                navegate('/')
+            }
+        })()
+    }, [])
+
 
     const formSubmit = e => {
         e.preventDefault()

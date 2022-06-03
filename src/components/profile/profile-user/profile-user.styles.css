@@ -1,0 +1,11 @@
+.image-profile{
+    height: 150px;
+    width: 150px;
+}
+
+.block-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

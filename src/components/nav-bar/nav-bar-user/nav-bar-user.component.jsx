@@ -14,13 +14,11 @@ export const NavBarUser = ({ user }) => {
         })()
     }
 
-    console.log(user);
-
     return (
         user ?
             <Nav>
                 <NavDropdown title={user.name} id="basic-nav-dropdown" className="justify-content-end">
-                    {user.rol === 'admin' ? <NavDropdown.Item as={Link} to='/admin'>Administración</NavDropdown.Item> : <></>}
+                    {user.rol === 'admin' ? <NavDropdown.Item as={Link} to='/create_recipe'>Crear receta</NavDropdown.Item> : <></>}
                     <NavDropdown.Item as={Link} to='/profile'>Perfil</NavDropdown.Item>
                     <NavDropdown.Item onClick={logout}>Cerrar sesión</NavDropdown.Item>
                 </NavDropdown>

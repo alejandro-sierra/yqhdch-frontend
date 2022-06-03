@@ -26,7 +26,6 @@ export const NavBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
                         <Nav.Link as={Link} to='/'>Inicio</Nav.Link>
-                        <Nav.Link as={Link} to='/create_recipe'>Crear receta</Nav.Link>
                     </Nav>
                     <Nav>
                         {user ? <NavBarUser user={user} /> : <Nav.Link as={Link} to='/login'>Iniciar sesión / Registrarse</Nav.Link>}
