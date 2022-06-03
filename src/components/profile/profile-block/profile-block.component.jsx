@@ -4,7 +4,9 @@ import { Image } from "react-bootstrap"
 import Helmet from "react-helmet"
 import { useNavigate } from "react-router-dom"
 import { apiRouteBase, AuthToken } from "../../../Constants"
+import blockImg from '../../../assets/img/block.png'
 import './profile-block.styles.css'
+import swal from "sweetalert"
 
 export const ProfileBlock = () => {
 
@@ -16,19 +18,51 @@ export const ProfileBlock = () => {
 
     useEffect(() => {
         (async () => {
-            await axios.get(apiRouteBase + `/api/recipe/3/50/fácil/vegetariana`)
+            await axios.get(apiRouteBase + '/api/users/status/block', AuthToken)
                 .then(response => {
                     setRecipes(response.data)
                 })
-                
+
             await axios.get(apiRouteBase + '/api/me', AuthToken)
                 .then(response => setUser(response.data))
-                .catch(console.log('No hay usuario registrado'))
         })()
     }, [])
 
     const handleDetail = e => {
-        navegate(`/recipe/details/${e.target.id}`)
+        if (e.target.id === 'block') {
+            (async () => {
+                const token = localStorage.getItem('my-token')
+
+                const http = axios.create({
+                    baseURL: apiRouteBase,
+                    headers: {
+                        'X-Request-With': 'XMLHttpRequest',
+                        Authorization: `Bearer ${token}`
+                    },
+                    withCredentials: true,
+                })
+                const csrf = await http.get('/sanctum/csrf-cookie')
+
+                try {
+                    await http.post('/api/users/status', {
+                        recipe_id: e.target.offsetParent.id,
+                        status: "bloqueados"
+                    })
+                    await axios.get(apiRouteBase + '/api/users/status/block', AuthToken)
+                        .then(response => {
+                            setRecipes(response.data)
+                        })
+                } catch (e) {
+                    swal({
+                        title: "Vaya...",
+                        text: "Ha habido un error. Por favor, inténtalo de nuevo más tarde.",
+                        icon: "warning"
+                    })
+                }
+            })()
+        } else {
+            navegate(`/recipe/details/${e.target.id}`)
+        }
     }
 
 
@@ -41,13 +75,9 @@ export const ProfileBlock = () => {
                 {recipes.map(recipe => {
                     return (
                         <div className='block-dish' id={recipe.id} key={recipe.id} onClick={e => handleDetail(e)}>
-                            {/* {user ?
-                                    <div className="block-icon-dish">
-                                        <Image src={blockImg} className="icon-dish" />
-                                        <Image src={favoriteImg} className="icon-dish" />
-                                        <Image src={deleteImg} className="icon-dish" />
-                                    </div>
-                                    : <></>} */}
+                            <div id={recipe.id} className="block-icon-dish">
+                                <Image src={blockImg} id='block' className="icon-dish" />
+                            </div>
                             <Image id={recipe.id} src={recipe.url_image} className="image-dish" />
                             <p id={recipe.id}>{recipe.title}</p>
                         </div>
