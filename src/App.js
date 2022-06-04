@@ -13,6 +13,7 @@ import { ProfileUser } from './components/profile/profile-user/profile-user.comp
 import { ProfileFavorite } from './components/profile/profile-favorite/profile-favorite.component';
 import { ProfileBlock } from './components/profile/profile-block/profile-block.component';
 import './App.css';
+import { RandomPage } from './components/random/random-recipe.component';
 
 function App() {
  
@@ -33,6 +34,7 @@ function App() {
           <Route path="favorites" element={<ProfileFavorite />} />
           <Route path="block" element={<ProfileBlock />} />
         </Route>
+        <Route path="/random" element={<RandomPage /> } />
         <Route path='/*' element={<PageError />} />
       </Routes>
     </div>

@@ -81,3 +81,9 @@
     height: auto;
   }
 }
+
+@media (max-width: 992px) {
+  .btn {
+      width: 100%;
+  }
+}
