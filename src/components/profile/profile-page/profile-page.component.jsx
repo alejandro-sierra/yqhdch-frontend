@@ -2,11 +2,11 @@ import { Image, Nav } from "react-bootstrap";
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import favorite from '../../../assets/img/favorite.png'
 import block from '../../../assets/img/block.png'
-import './profile-page.styles.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { apiRouteBase, AuthToken } from "../../../Constants";
 import userIMG from '../../../assets/img/user.png'
+import './profile-page.styles.css'
 
 
 

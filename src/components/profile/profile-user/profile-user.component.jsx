@@ -31,7 +31,7 @@ export const ProfileUser = () => {
             <Helmet>
                 <title>Perfil | YQHDCH</title>
             </Helmet>
-            <div className="block-box">
+            <div className="mt-3">
                 <div className='block-user'>
                     <p><Image src={photo_user} className="image-profile" /></p>
                     <p id={user.id}>Nombre: {user.name}</p>

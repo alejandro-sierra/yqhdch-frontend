@@ -62,7 +62,7 @@ export const LoginPage = () => {
             </Helmet>
             <Form className="login-form" onSubmit={formSubmit}>
                 <Image className="login-image" src={loginImage} />
-                    <Form.Control type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+                    <Form.Control autoFocus type="email" placeholder="Email" onChange={e => setEmail(e.target.value)} />
                     <Form.Control type="password" placeholder="Contraseña" onChange={e => setPassword(e.target.value)} />
                 <Button variant="primary" type="submit">
                     Iniciar Sesión
