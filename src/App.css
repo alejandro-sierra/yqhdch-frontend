@@ -46,8 +46,8 @@
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-soft);
-  border: var(--primary-soft);
+  background-color: var(--secondary-soft);
+  border: var(--secondary-soft);
 }
 
 .swal-footer,
