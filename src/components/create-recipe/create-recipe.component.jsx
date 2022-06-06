@@ -104,7 +104,7 @@ export const CreateRecipe = () => {
                 <Form.Control type="number" placeholder="Tiempo de preparación (en minutos)" value={tiempo} onChange={e => setTiempo(e.target.value)} />
                 <Form.Select aria-label="Default select example" value={dieta} onChange={e => setDieta(e.target.value)}>
                     <option value="vegetariana">Vegetariana</option>
-                    <option value="estandar">Estandar</option>
+                    <option value="estándar">Estándar</option>
                     <option value="postre">Postres</option>
                 </Form.Select>
                 <Form.Control type="text" placeholder="Url de la imágen" value={imagen_url} onChange={e => setImageUrl(e.target.value)} />
