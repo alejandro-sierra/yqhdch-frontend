@@ -8,7 +8,6 @@
   --secondary: #FCA244;
   --color-border: #9b9d9f;
   --color-border-soft: #e9e9e9;
-  /* --color-border-soft: #f1f1f1; */
   --font-primary: 'Roboto', sans-serif;
   --font-secondary: 'Roboto Mono', monospace;
 }
@@ -86,4 +85,8 @@
   .btn {
       width: 100%;
   }
+}
+
+.block-icon-dish img{
+  cursor: pointer;
 }

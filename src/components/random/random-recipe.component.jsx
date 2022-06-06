@@ -59,7 +59,9 @@ export const RandomPage = () => {
                         swal({
                             title: "Bloqueos...",
                             text: `${response.data.message}`,
-                            icon: "success"
+                            icon: "success",
+                            buttons: false,
+                            timer: 2500
                         })
                     })
                 } catch (e) {
@@ -92,7 +94,9 @@ export const RandomPage = () => {
                         swal({
                             title: "Favoritas...",
                             text: `${response.data.message}`,
-                            icon: "success"
+                            icon: "success",
+                            buttons: false,
+                            timer: 2500
                         })
                     })
                 } catch (e) {
